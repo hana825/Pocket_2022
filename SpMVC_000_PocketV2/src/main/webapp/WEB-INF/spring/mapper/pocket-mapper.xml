@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.na.pocket.persistence.PocketDao">
+
+
+ 	<select id="selectAll" resultType="PocketVO">
+ 		SELECT * FROM tbl_pocket
+ 	</select>
+ 	
+ 	<select id="findById" resultType="PocketVO">
+ 		SELECT * FROM tbl_pocket
+ 		WHERE userId = #{userId}
+ 	</select>
+ 	
+ 	<select id="findByPocketId" resultType="PocketVO">
+ 		SELECT * FROM tbl_pocket
+ 		WHERE id = #{id}
+ 	</select>
+ 	
+ 	
+ 	<insert id="insert" parameterType="PocketVO">
+ 		INSERT INTO tbl_pocket ( id, userId )
+ 		VALUES ( #{id}, #{userId} )
+ 	</insert>
+ 	<update id="update" parameterType="PocketVO">
+ 		UPDATE tbl_pocket
+ 		SET id = #{id} 
+ 		WHERE userId = #{userId}
+ 	</update>
+ 	
+ 	<delete id="delete">
+ 		DELETE FROM tbl_pocket
+ 		WHERE id = #{id}
+ 	</delete>
+ 	
+ </mapper> 

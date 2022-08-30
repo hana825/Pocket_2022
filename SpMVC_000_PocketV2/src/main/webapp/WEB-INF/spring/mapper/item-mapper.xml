@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.na.pocket.persistence.ItemDao">
+
+
+ 	<select id="selectAll"  resultType="ItemVO">
+ 		SELECT * from tbl_item
+ 	</select>
+ 	
+ 	<select id="findById" resultType="ItemVO">
+ 		SELECT * from tbl_item
+ 		WHERE id = #{id}
+ 	</select>
+ 	
+ 	<insert id="insert" parameterType="ItemVO">
+ 		INSERT INTO tbl_item ( name, price )
+ 		VALUES ( #{name}, #{price} )
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="ItemVO">
+ 		UPDATE tbl_item
+ 		SET name = #{name},
+ 			price = #{price}
+ 		WHERE id = #{id}
+ 	</update>
+
+ 	<delete id="delete">
+ 		DELETE FROM tbl_item
+ 		WHERE id = #{id}
+ 	</delete>
+ 	
+ 	
+ </mapper> 
