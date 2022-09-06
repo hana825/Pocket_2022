@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core"
-prefix="c" %>
+prefix="c"%>
 <c:set value="${pageContext.request.contextPath}" var="rootPath" />
 <!DOCTYPE html>
 <html>
@@ -27,16 +27,19 @@ prefix="c" %>
         font-weight: normal;
         font-style: normal;
       }
+
       * {
         margin: 0px;
         padding: 0px;
         font-family: "GongGothicLight";
       }
+
       html {
-      	height: 100%;
+        height: 100%;
       }
+
       body {
-      	height: 100%;
+        height: 100%;
       }
 
       nav.nav {
@@ -44,40 +47,49 @@ prefix="c" %>
         height: 100%;
         background-color: #ccc;
       }
+
       .box {
         justify-content: left;
         align-items: center;
       }
+
       .timerBox {
         outline: 2px solid black;
       }
+
       .timerBox .time {
         font-size: 30pt;
         color: #4c4c4c;
         text-align: center;
         font-family: "Orbitron", sans-serif;
       }
+
       .costBox {
         outline: 2px solid black;
       }
+
       .costBox .cost {
         font-size: 30pt;
         color: #4c4c4c;
         text-align: center;
         font-family: "Orbitron", sans-serif;
       }
+
       .btnBox {
         margin: 20px auto;
         text-align: center;
       }
+
       .btnBox .fa {
         margin: 0px 15px;
         font-size: 30pt;
         color: #555;
         cursor: pointer;
       }
+
       .sidebar {
       }
+
       .sidebox {
         padding: 10px;
         cursor: pointer;
@@ -86,68 +98,62 @@ prefix="c" %>
         font-size: 1.5rem;
         color: #555;
       }
+
       div.sidebox i {
         color: #555;
       }
+
       a {
         text-decoration: none;
         color: inherit;
       }
+
       section#bodyContents {
         display: inline-block;
       }
 
-
-	  /* 나눈거 */
+      /* 나눈거 */
       .flex-container {
         display: flex;
         height: inherit;
       }
+
       .flex-side {
         width: 25%;
       }
+
       .flex-right {
         width: 75%;
         display: flex;
-	    align-items: center;
-	    flex-direction: column;
+        align-items: center;
+        flex-direction: column;
       }
-      
-      
-      
+
       .item_list_container {
-	    align-items: center;
-	    display: flex;
-	    flex-direction: column;
-	    border: 1px solid #000;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #000;
       }
-      
+
       table.menu_table {
-      	box-sizing: border-box;
-   		padding: 10px 0;
+        box-sizing: border-box;
+        padding: 10px 0;
       }
-      
-      table.menu_table th, td {
-      	padding: 10px;
+
+      table.menu_table th,
+      td {
+        padding: 10px;
       }
-      
-      
     </style>
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <script>
-<<<<<<< HEAD
       let time = 0;
       let cost = 150;
       let settext = "";
-      
+
       let starFlag = true;
-=======
-      var time = 0;
-      var cost = 150;
-      var settext = "";
-      
-      var starFlag = true;
->>>>>>> 1a60fce466d85b71d5fefe773a7dcdcfd61e2fb5
+
       $(document).ready(function () {
         buttonEvt();
       });
@@ -158,9 +164,13 @@ prefix="c" %>
       function init_c() {
         document.getElementById("cost").innerHTML = "0₩";
       }
-      
+
       function init_text() {
-    	document.getElementById("text").innerHTML = "시작버튼을 눌러 시작하시오.";
+        document.getElementById("text").innerHTML = "";
+      }
+      function start_text() {
+        document.getElementById("text").innerHTML =
+          "시작버튼을 눌러 시작하시오.";
       }
 
       function buttonEvt() {
@@ -175,6 +185,8 @@ prefix="c" %>
             $(".fa").css("color", "#BFBFBF");
             this.style.color = "#4C4C4C";
             starFlag = false;
+
+            init_text();
 
             if (time == 0) {
               init();
@@ -227,6 +239,7 @@ prefix="c" %>
 
         // stop btn
         $("#stopbtn").click(function () {
+          start_text();
           if (time != 0) {
             $(".fa").css("color", "#BFBFBF");
             this.style.color = "#4C4C4C";
@@ -244,7 +257,7 @@ prefix="c" %>
   <div class="flex-container">
     <div class="flex-items flex-side">
       <nav class="nav">
-      	<!-- Stopwatch -->
+        <!-- Stopwatch -->
         <div id="box" class="box">
           <div id="timerBox" class="timerBox">
             <div id="time" class="time">00:00:00</div>
@@ -259,8 +272,8 @@ prefix="c" %>
           </div>
           <div id="text">시작버튼을 눌러 시작하시오.</div>
         </div>
-		
-		<!-- menu -->
+
+        <!-- menu -->
         <div class="sidebar">
           <div class="sidebox order" onclick="order()">
             <i class="fa-solid fa-basket-shopping"></i>ORDER
@@ -275,81 +288,140 @@ prefix="c" %>
         </div>
       </nav>
     </div>
-    
+
     <!-- Content 부분 -->
-  	<div class="flex-items flex-right" id="contents"></div>
+    <div class="flex-items flex-right" id="contents"></div>
   </div>
   <script>
     const contents = document.querySelector("#contents");
+
     const order = () => {
       contents.innerHTML = `
-    				<h1>이곳은 주문 페이지</h1>
-					
-    				<div class="item_list_container">
-    					<h2>MENU</h2>
-						<table class="menu_table">
-	    					<c:forEach items="${ITEM_LIST}" var="item">
-		    							<tr onclick="getItems(${item.id}, ${1}, ${POCKETID})">
-		    								<th>음료명 :</th>
-		    								<td>${item.name}</td>
-		    								<th>가격 :</th>
-		    								<td>${item.price}</td>
-		    							</tr>
-	    					</c:forEach>
-  						</table>
-  						
-    				</div>
-    				<div class="order_list">
+       				<h1>이곳은 주문 페이지</h1>
 
-    				</div>
-    				`;
+       				<div class="item_list_container">
+       					<h2>MENU</h2>
+    						<table class="menu_table">
+    							<c:forEach items="${ITEM_LIST}" var="item">
+    								<tr>
+    									<th>음료명 :</th>
+    									<td>${item.name}</td>
+    									<th>가격 :</th>
+    									<td>${item.price}</td>
+    									<td onclick="getItems(${
+                        item.id
+                      }, ${1}, ${POCKETID})"><i class="fa-solid fa-plus"></i></td>
+    									<td onclick="removeItems(${
+                        item.id
+                      }, ${1}, ${POCKETID})"><i class="fa-solid fa-minus"></i></td>
+    								</tr>
+
+    							</c:forEach>
+      						</table>
+       				</div>
+       				<div class="order_list">
+
+       				</div>
+       				<button onclick="submit(${POCKETID})" type="button">주문</button>
+       				`;
     };
-    
+
+    const submit = (id) => {
+      fetch(`http://localhost:8080/pocket/order/get/` + id, {
+        method: "POST",
+        body: JSON.stringify(order_items),
+        dataType: "json",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      for (const item of order_items) {
+        item.count = 0;
+      }
+      console.log(order_items);
+      const orderList = document.querySelector(".order_list");
+      orderList.innerHTML = "";
+    };
+
+    const orange = document.createElement("h1");
+    const cola = document.createElement("h1");
+    const americano = document.createElement("h1");
+
+    const order_items = [
+      {
+        name: "오렌지 주스",
+        id: 8,
+        price: 1000,
+        count: 0,
+      },
+      {
+        name: "제로콜라",
+        id: 9,
+        price: 2000,
+        count: 0,
+      },
+      {
+        name: "아이스아메리카노",
+        id: 10,
+        price: 1500,
+        count: 0,
+      },
+    ];
 
     const getItems = (id, count, pocketId) => {
-      fetch(`${rootPath}/order/get/` + id + "/" + count + "/" + pocketId)
-	        .then((res) => res.json())
-	        .then((json) => {
-	        	const orderList = document.querySelector(".order_list");
-	        	orderList.textContent = "";
-	        	const orange = document.createElement("h1")
-	        	const coke = document.createElement("h1")
-	        	const americano = document.createElement("h1")
-	        	let orangeCnt = 0;
-	        	let cokeCnt = 0;
-	        	let americanoCnt = 0;
-	        	json.map((item)=>{
-<<<<<<< HEAD
-	        		if(item.id === 8){
-=======
-	        		if(item.id === 1){
->>>>>>> 1a60fce466d85b71d5fefe773a7dcdcfd61e2fb5
-	        		//오렌지
-	        		orangeCnt++
-	        		orange.textContent = "오렌지쥬스 X "+orangeCnt;
-	        		orderList.appendChild(orange);
-<<<<<<< HEAD
-	        		} else if(item.id === 9){
-=======
-	        		} else if(item.id === 2){
->>>>>>> 1a60fce466d85b71d5fefe773a7dcdcfd61e2fb5
-	        		//제로콜라
-	        		cokeCnt++
-	        			coke.textContent = "콜라 X "+cokeCnt;
-	        		orderList.appendChild(coke);
-<<<<<<< HEAD
-	        		} else if(item.id === 10){
-=======
-	        		} else if(item.id === 3){
->>>>>>> 1a60fce466d85b71d5fefe773a7dcdcfd61e2fb5
-	        		//아아
-	        		americanoCnt++
-	        			americano.textContent = "아이스아메리카노 X "+americanoCnt;
-	        		orderList.appendChild(americano);
-	        		}
+      console.log(id);
+      console.log(pocketId);
 
-	        	})
-	        });
+      const orderList = document.querySelector(".order_list");
+      orderList.textContent = "";
+
+      order_items.map((item) => {
+        if (id === item.id) {
+          const h1 = document.createElement("h1");
+          // 총 가격
+          h1.innerHTML = "";
+          console.log(item);
+
+          // item add
+          item.count += 1;
+
+          for (const i of order_items) {
+            h1.innerHTML += i.name + "x" + i.count + "<br/>";
+          }
+
+          document.querySelector(".order_list").appendChild(h1);
+        }
+      });
+      let sum = 0;
+      for (const item of order_items) sum += item.price * item.count;
+      const t_price = document.createElement("h1");
+      t_price.textContent = sum;
+      document.querySelector(".order_list").appendChild(t_price);
+    };
+
+    const removeItems = (id, count, pocketId) => {
+      const orderList = document.querySelector(".order_list");
+      orderList.textContent = "";
+
+      order_items.map((item) => {
+        if (id === item.id) {
+          const h1 = document.createElement("h1");
+          h1.textContent = "";
+          console.log(item);
+
+          // item remove
+          // 0까지만 내리기
+          if (item.count !== 0) {
+            item.count -= 1;
+          }
+
+          for (const i of order_items) {
+            h1.innerHTML += i.name + "x" + i.count + "<br/>";
+          }
+          document.querySelector(".order_list").appendChild(h1);
+        }
+      });
     };
   </script>
 </html>

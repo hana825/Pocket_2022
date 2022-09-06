@@ -18,6 +18,8 @@ public class OrderVO {
 	private int item;		
 	private int pocketId;
 	private int count;
+	
+	private String name;
 
 
 }

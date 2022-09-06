@@ -8,7 +8,6 @@
 
  	<select id="selectAll" resultType="OrderVO">
  		SELECT * from tbl_order
- 		WHERE id = #{id}
  	</select>
  	
  	<select id="findById"></select>

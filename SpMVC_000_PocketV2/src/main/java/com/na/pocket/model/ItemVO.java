@@ -17,5 +17,6 @@ public class ItemVO {
 	private int id;
 	private String name;
 	private String price;
-
+	
+	private int count;
 }

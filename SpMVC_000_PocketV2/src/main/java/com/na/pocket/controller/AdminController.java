@@ -12,6 +12,7 @@ import com.na.pocket.model.ItemVO;
 import com.na.pocket.model.PocketVO;
 import com.na.pocket.model.UserVO;
 import com.na.pocket.service.ItemService;
+import com.na.pocket.service.OrderService;
 import com.na.pocket.service.PocketService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +33,9 @@ public class AdminController {
 	
 	@Autowired
 	private ItemService itemService;
+	
+	@Autowired
+	private OrderService orderService;
 	
 	// 당구대 삽입
 	@RequestMapping(value="/pocketIn", method=RequestMethod.GET)
@@ -61,6 +65,13 @@ public class AdminController {
 	@RequestMapping(value="/itemDel/{id}", method=RequestMethod.GET)
 	public String deleteItem(@PathVariable(name="id") int id) {
 		itemService.delete(id);
+		return "redirect:/";
+	}
+	
+	// 주문 완료
+	@RequestMapping(value="/orderCom/{id}", method=RequestMethod.GET)
+	public String orderComp(@PathVariable(name="id") int id) {
+		orderService.delete(id);
 		return "redirect:/";
 	}
 	

@@ -17,9 +17,9 @@ public class OrderServiceImpl implements OrderService{
 	private OrderDao orderDao;
 	
 	@Override
-	public void saveOrder(ItemVO item, int count, int pocketId) {
+	public void saveOrder(ItemVO item, int pocketId) {
 		orderDao.insert(OrderVO.builder()
-				.count(count)
+				.count(item.getCount())
 				.pocketId(pocketId)
 				.item(item.getId())
 				.build());
@@ -29,6 +29,16 @@ public class OrderServiceImpl implements OrderService{
 	public List<OrderVO> findByPocketId(int pocketId) {
 		
 		return orderDao.findByPocketId(pocketId);
+	}
+
+	@Override
+	public List<OrderVO> getOrderList() {
+		return orderDao.selectAll();
+	}
+
+	@Override
+	public int delete(int id) {
+		return orderDao.delete(id);
 	}
 
 }

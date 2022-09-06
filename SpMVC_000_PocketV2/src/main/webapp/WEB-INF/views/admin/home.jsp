@@ -41,6 +41,9 @@
 		<%@ include file="/WEB-INF/views/admin/item/input.jsp" %>
 		<%@ include file="/WEB-INF/views/admin/item/detail.jsp" %>
 	</div>
+	<div class="flex-items order">
+		<%@ include file="/WEB-INF/views/admin/orders.jsp" %>
+	</div>
 </div>
 </body>
 </html>

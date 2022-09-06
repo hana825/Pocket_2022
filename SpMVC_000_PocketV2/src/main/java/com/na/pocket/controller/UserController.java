@@ -1,10 +1,7 @@
 package com.na.pocket.controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.nio.file.attribute.UserPrincipalNotFoundException;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;

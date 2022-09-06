@@ -1,5 +1,7 @@
 package com.na.pocket.model;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,4 +19,5 @@ public class PocketVO {
 	private int id;
 	private String userId;
 
+	private List<OrderVO> orderList;
 }
