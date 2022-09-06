@@ -6,10 +6,36 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	table {
+		margin: 0 auto;
+	    width: 100%;
+	    padding: 10px 30px;
+	    text-align: left;
+	    border-collapse: collapse;
+	}
+	table.menu_item:nth-last-of-type(even) {
+		background-color: #f2f2f2;
+	}
+	table.menu_item:hover {
+		background-color: #ddd;
+	}
+	.menu_item th, td {
+		padding: 5px 10px;
+		text-align: left;
+	}
+	.menu_item th {
+		width: 40%;
+	}
+	.menu_item tr:nth-last-of-type(1) {
+		text-align: center;
+	}
+
+</style>
 </head>
-<body>
+<div class="scroll scroll-style">
 <c:forEach items="${ITEM_LIST}" var="item">
-	<table>
+	<table class="menu_item">
 		<tr>
 			<th>음료명 :</th>
 			<td>${item.name}</td>
@@ -19,9 +45,9 @@
 			<td>${item.price}</td>
 		</tr>
 		<tr>
-			<td><a href="${rootPath}/itemDel/${item.id}">삭제</a></td>
+			<td colspan="2"><a class="btn btn_na" href="${rootPath}/itemDel/${item.id}">삭제</a></td>
 		</tr>
 	</table>
 </c:forEach>
-</body>
+</div>
 </html>

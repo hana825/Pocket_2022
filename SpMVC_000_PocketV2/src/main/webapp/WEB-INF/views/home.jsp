@@ -11,6 +11,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
 <title>Pocket</title>
 <style>
 	@font-face {
@@ -29,9 +30,10 @@
 	    justify-content: center;
 	    align-items: center;
 	    text-align: center;
+	    flex-direction: column;
 	}
   	body {
-		height: 100vh;
+		height: 100vh; 
 		width: 100vw;
 		align-items: center;
 		justify-content: center;
@@ -44,7 +46,7 @@
 	
 	/* 	시작부분 */
 	form.form-join {
-		max-width: 330px;
+		max-width: 360px;
 	    padding: 15px;
 	    margin: 0 auto;
 	}
@@ -67,18 +69,18 @@
 		font-weight: 400;
 		line-height: 1.5;
 		color: #212529;
-		background-color: #eee;
-		padding-top: 40px;
-		padding-bottom: 40px;
+/* 		padding-top: 40px; */
+/* 		padding-bottom: 40px; */
 	}
 	
 	.container {
 		max-width: 540px;
-		margin-right: auto;
-		margin-left: auto;
+		margin: 0 auto;
 		padding-right: 15px;
 		padding-left: 15px;
 		width: 100%;
+		height: 100%;
+    	max-height: 880px;
 	}
 	.form-control {
 		position: relative;
@@ -97,6 +99,7 @@
 	
 	.btn {
 		display: block;
+		text-decoration: none;
 		padding: 0.5rem 1rem;
 		font-size: 1.25rem;
 		line-height: 1.5;
@@ -115,26 +118,61 @@
 		color: #fff;
 	    background-color: #0069d9;
 	    border-color: #0062cc;
+	    cursor: pointer;
 	}
-	
+	a.btn_na {
+		padding: 0; 
+		background-color: #f54242;
+	}
+	a.btn_na:hover {
+ 		padding: 0; 
+		border-color: #f54242;
+		background-color: #e02d2d;
+	}
+	.btn_add {
+		width: fit-content;
+    	display: inline-block;
+    	padding: 5px 8px;
+    	font-size: 1rem;
+    	cursor: pointer;
+	}
+	.btn_admin {
+		background-color: #333;
+	}
+	.btn_admin:hover {
+		background-color: #111;
+		border-color: #333;
+	}
+	header {
+		display: flex;
+	    justify-content: space-between;
+	    align-items: center;
+	    padding: 0 50px;
+	    background-color: #127346;
+	    color: #fff;
+	}
+	header h1 {
+		font-size: 3rem;
+	}
 </style>
 </head>
 <body>
-
-
-
-<h1>Welcome</h1>
-<%-- <a href="${rootPath}/user/login" class="fa-regular fa-circle-play fa-10x play"></a> --%>
-
+	
 
 <c:if test="${empty USER}">
-	<a href="${rootPath}/user/login">관리자모드</a>
+<header>
+	<div><h1>8BALL</h1></div>
+	<a class="btn btn_admin btn_add" href="${rootPath}/user/login">관리자모드</a>
+</header>
 	<%@ include file="/WEB-INF/views/user/join.jsp" %>
 
 </c:if>
 
 <c:if test="${not empty USER}">
-	<a href="${rootPath}/user/logout">관리자 로그아웃</a>
+<header>
+	<div><h1>8BALL</h1></div>
+	<a class="btn btn_admin btn_add" href="${rootPath}/user/logout">관리자 로그아웃</a>
+</header>
 	<%@ include file="/WEB-INF/views/admin/home.jsp" %>
 
 </c:if>

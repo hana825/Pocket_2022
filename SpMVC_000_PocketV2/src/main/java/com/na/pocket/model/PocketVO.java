@@ -18,6 +18,7 @@ import lombok.ToString;
 public class PocketVO {
 	private int id;
 	private String userId;
-
+	
+	private int total;
 	private List<OrderVO> orderList;
 }

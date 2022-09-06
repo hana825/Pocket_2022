@@ -44,12 +44,9 @@ public class OrderController {
 				orderService.saveOrder(itemVO, id);
 			}
 		}
-//		List<OrderVO> orderList = orderService.findByPocketId(pocketId);
-//		List<ItemVO> itemList = new ArrayList<>();
-//		for(OrderVO order: orderList) {
-//			itemList.add(itemService.findById(order.getItem()));
-//		}
 		return ResponseEntity.ok("hi");
 	}
+	
+	
 
 }

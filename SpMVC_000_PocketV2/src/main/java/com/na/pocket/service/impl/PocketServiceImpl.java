@@ -31,8 +31,7 @@ public class PocketServiceImpl implements PocketService {
 
 	@Override
 	public int update(PocketVO pocket) {
-		// TODO Auto-generated method stub
-		return 0;
+		return pocketDao.update(pocket);
 	}
 
 	@Override
@@ -60,5 +59,6 @@ public class PocketServiceImpl implements PocketService {
 			session.setAttribute("POCKETID", pocketVO.getId());
 		}
 	}
+
 
 }

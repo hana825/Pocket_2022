@@ -25,10 +25,11 @@
  		INSERT INTO tbl_pocket ( id, userId )
  		VALUES ( #{id}, #{userId} )
  	</insert>
+ 	
  	<update id="update" parameterType="PocketVO">
  		UPDATE tbl_pocket
- 		SET id = #{id} 
- 		WHERE userId = #{userId}
+ 		SET total = #{total} 
+ 		WHERE id = #{id}
  	</update>
  	
  	<delete id="delete">

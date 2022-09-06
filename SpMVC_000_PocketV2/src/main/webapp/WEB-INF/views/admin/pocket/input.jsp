@@ -8,9 +8,9 @@
 </head>
 <body>
 	<form action="${rootPath}/pocketIn">
-		<input class="pocket" name="id" type="number" placeholder="당구대번호" 
+		<input class="pocket" name="id" type="number" placeholder="당구대번호" min="1" 
 		onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
-		<button >당구대 추가</button>
+		<button class="btn btn_add" >당구대 추가</button>
 	</form>
 </body>
 </html>

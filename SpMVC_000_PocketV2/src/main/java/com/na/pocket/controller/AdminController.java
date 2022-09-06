@@ -75,6 +75,14 @@ public class AdminController {
 		return "redirect:/";
 	}
 	
+	// 결제 완료
+	@RequestMapping(value="/totalCom/{id}", method=RequestMethod.GET)
+	public String totalCom(@PathVariable(name="id") int id) {
+		PocketVO pocketVO = pocketService.findByPocketId(id);
+		pocketVO.setTotal(0);
+		pocketService.update(pocketVO);
+		return "redirect:/";
+	}
 
 
 }

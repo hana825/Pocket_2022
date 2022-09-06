@@ -8,6 +8,7 @@ import com.na.pocket.model.PocketVO;
 
 public interface PocketService {
 	
+
 	public PocketVO findById(String userId);
 	public int insert(PocketVO pocket);
 	public int update(PocketVO pocket);
@@ -18,7 +19,6 @@ public interface PocketService {
 	
 	// 당구대 입력후 출입
 	public void pocketEnter(PocketVO pocket, HttpSession session);
-	
 	
 	
 	

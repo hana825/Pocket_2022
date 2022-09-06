@@ -10,7 +10,7 @@
 	<form action="${rootPath}/itemIn" method="POST">
 		<input name="name" placeholder="음료명" >
 		<input name="price" placeholder="가격" type="number" min="0" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" >
-		<button >추가</button>
+		<button class="btn btn_add">추가</button>
 	</form>
 </body>
 </html>
