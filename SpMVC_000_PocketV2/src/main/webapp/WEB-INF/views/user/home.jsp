@@ -469,7 +469,7 @@ prefix="c"%>
     };
 
     const submit = (id) => {
-      fetch(`http://localhost:8080/pocket/order/get/` + id, {
+      fetch(`${rootPath}/order/get/` + id, {
         method: "POST",
         body: JSON.stringify(order_items),
         dataType: "json",
