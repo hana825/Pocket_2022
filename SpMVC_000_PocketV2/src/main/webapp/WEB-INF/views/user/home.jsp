@@ -18,7 +18,7 @@ prefix="c"%>
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Raleway&family=Gowun+Dodum&display=swap"
       rel="stylesheet"
     />
-    <title>Pocket</title>
+    <title>8BALL</title>
     <style>
       @font-face {
         font-family: "GongGothicLight";
